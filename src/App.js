@@ -11,7 +11,7 @@ const App = props => {
       { id:'ysysy', name: "Tanvesh012", age: 185 },
     ]
   });
-
+  
   const [toogleState, setToggleState] = useState({
     showPerson: false
   })
@@ -26,12 +26,14 @@ const App = props => {
     const person = {
       ...personState.person[personIndex]
     }
-    
+    person.name = event.target.value;
+    const Person = [
+      ...personState.person
+    ]
+    Person[personIndex] = person;
+
     setpersonState({
-      person: [
-        { name: "Tanvesh", age: 50 },
-        { name: event.target.value, age: 39 }
-      ]
+      person: Person
     });
   };
 
