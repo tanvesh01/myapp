@@ -20,3 +20,28 @@
 .App-link {
   color: #09d3ac;
 }
+
+.red{
+  color: red;
+}
+
+.bold{
+  font-weight: bolder;
+}
+
+/* background: green;
+    border: none;
+    color: white;
+    padding: 5px;
+    &:hover {
+      background : #00ffcc;
+      color:black;
+    } */
+
+  /* ====================== */
+  /* width: 80%;
+  margin: 16px auto;
+  border: 11px dashed #eee;
+  box-shadow : 1px 2px 3px black;
+  padding:16px;
+  text-align:center; */

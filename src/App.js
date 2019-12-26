@@ -3,19 +3,20 @@ import Person from "./Person/Person";
 import "./App.css";
 
 
+
 const App = props => {
   const [personState, setpersonState] = useState({
     person: [
-      { id:'asdas' , name: "Tanvesh01", age: 18 },
-      { id:'ysyrh', name: "yoyoHoney!!! ", age: 35 },
-      { id:'ysysy', name: "Tanvesh012", age: 185 },
+      { id:'asdas', name: "Tanvesh01", age: 18},
+      { id:'ysyrh', name: "yoyoHoney", age: 35},
+      { id:'ysysy', name: "Tanvesh04", age: 10},
     ]
   });
   
   const [toogleState, setToggleState] = useState({
     showPerson: false
   })
-
+  // eslint-disable-next-line
   const [OtherState, setOtherState] = useState("iphone");
 
   
@@ -69,12 +70,24 @@ const App = props => {
         })}  
       </div>
     )
+    // myStyle.background = "red";
+    // myStyle[":hover"] = {
+    //   background:"pink",
+    //   color:"black"
+    // }
   }  
+  const classes = [];
+  if(personState.person.length <= 2){
+    classes.push("red");
+  }
+  if(personState.person.length <= 1){
+    classes.push("bold");
+  }
 
   return (
     <div className="App">
-      <p>this is it!</p>
-      <button onClick={toogleNames}>
+      <p className={classes.join(" ")} >this is it!</p>
+      <button  onClick={toogleNames}>
         Switch this
       </button>
       {persons}
