@@ -1,20 +1,21 @@
 import React, { useState } from "react";
-import Person from "./Person/Person";
-import "./App.css";
+import Persons from "../components/Persons/Persons";
+import classess from "./App.module.css";
+import Cockpit from "../components/cockpit/cockpit";
 
 const App = props => {
   const [personState, setpersonState] = useState({
     person: [
       { id: "asdas", name: "Tanvesh01", age: 18 },
-      { id: "ysyrh", name: "yoyoHoney!!! ", age: 35 },
-      { id: "ysysy", name: "Tanvesh012", age: 185 }
+      { id: "ysyrh", name: "yoyoHoney", age: 35 },
+      { id: "ysysy", name: "Tanvesh04", age: 10 }
     ]
   });
 
   const [toogleState, setToggleState] = useState({
     showPerson: false
   });
-
+  // eslint-disable-next-line
   const [OtherState, setOtherState] = useState("iphone");
 
   const nameChangeHandler = (event, id) => {
@@ -25,6 +26,7 @@ const App = props => {
       ...personState.person[personIndex]
     };
     person.name = event.target.value;
+    console.log(event);
     const Person = [...personState.person];
     Person[personIndex] = person;
 
@@ -48,40 +50,23 @@ const App = props => {
   };
 
   let persons = null;
-  const myStyle = {
-    background: "green",
-    color: "white",
-    padding: "5px"
-  };
+
   if (toogleState.showPerson) {
     persons = (
       <div>
-        {personState.person.map((person, index) => {
-          return (
-            <Person
-              key={person.id}
-              name={person.name}
-              age={person.age}
-              click={() => deleteNameHandler(index)}
-              changeName={event => nameChangeHandler(event, person.id)}
-            />
-          );
-        })}
+        <Persons
+          click={deleteNameHandler}
+          change={nameChangeHandler}
+          person={personState.person}
+        />
       </div>
     );
-    myStyle.background = "red";
   }
 
   return (
-    <div className="App">
-      <p>this is it!</p>
-      <button style={myStyle} onClick={toogleNames}>
-        Switch this
-      </button>
+    <div className={classess.App}>
+      <Cockpit personState={personState} toogleNames={toogleNames} />
       {persons}
-      {/* { toogleState.showPerson === true ? 
-      null
-      } */}
       <p className="App">{OtherState}</p>
     </div>
   );
